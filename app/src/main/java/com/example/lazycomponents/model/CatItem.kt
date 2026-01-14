@@ -5,6 +5,6 @@ data class CatItem(
     val id: String,
     val titol: String,
     val text: String,
-    val imageURL: String,
+    val imageUrl: String,
     val tags: List<String>
 )
