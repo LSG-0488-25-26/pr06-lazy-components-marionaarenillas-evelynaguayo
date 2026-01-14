@@ -1,5 +1,6 @@
 package com.example.lazycomponents.view.components
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,10 +12,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.lazycomponents.model.CatItem
 
 @Composable
@@ -32,7 +35,15 @@ fun CatCardItem(
         Column(modifier = Modifier.padding(10.dp)) {
 
             AsyncImage(
-                model = cat.imageUrl,
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(cat.imageUrl)
+                    .crossfade(true)
+                    .listener(
+                        onError = { _, result ->
+                            Log.e("COIL", "Error carregant: ${cat.imageUrl}", result.throwable)
+                        }
+                    )
+                    .build(),
                 contentDescription = cat.titol,
                 placeholder = painterResource(android.R.drawable.ic_menu_gallery),
                 error = painterResource(android.R.drawable.ic_delete),
