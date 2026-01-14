@@ -2,6 +2,8 @@ package com.example.lazycomponents.view.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -44,7 +46,10 @@ fun DetailScreen(
         AsyncImage(
             model = cat.imageUrl,
             contentDescription = cat.titol,
-            modifier = Modifier.padding(top = 12.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp)
+                .padding(top = 12.dp)
         )
 
         Text(
