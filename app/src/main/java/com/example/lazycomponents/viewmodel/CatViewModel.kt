@@ -7,6 +7,7 @@ import com.example.lazycomponents.model.CatItem
 import com.example.lazycomponents.repository.CatRepository
 
 // Guarda l'estat de la llista en un LiveData
+// La vista es subscriu i actualitza sola quan canvia
 
 class CatViewModel : ViewModel() {
     private val _cats = MutableLiveData<List<CatItem>>()
