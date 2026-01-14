@@ -2,6 +2,8 @@ package com.example.lazycomponents.repository
 
 import com.example.lazycomponents.model.CatItem
 
+// Repositori simulat amb dades manuals, les imatges corresponen a la API.
+
 object CatRepository {
 
     fun getCats(): List<CatItem> {
